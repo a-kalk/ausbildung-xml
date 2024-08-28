@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:bsp="https://raw.githubusercontent.com/a-kalk/ausbildung-xml/main/sampleProject.xsd"
-           targetNamespace="https://raw.githubusercontent.com/a-kalk/ausbildung-xml/main/sampleProject.xsd"
+           targetNamespace="https://raw.githubusercontent.com/a-kalk/1.0"
            elementFormDefault="qualified">
 
     <xs:simpleType name="roleTypes">
@@ -64,7 +63,7 @@
                                                     <xs:element name="roles" minOccurs="1" maxOccurs="1">
                                                         <xs:complexType>
                                                             <xs:sequence>
-                                                                <xs:element maxOccurs="1" name="role" type="bsp:roleTypes" />
+                                                                <xs:element maxOccurs="1" name="role" type="roleTypes" />
                                                             </xs:sequence>
                                                         </xs:complexType>
                                                     </xs:element>
@@ -85,7 +84,7 @@
                                                     <xs:element name="roles" minOccurs="0" maxOccurs="1">
                                                         <xs:complexType>
                                                             <xs:sequence>
-                                                                <xs:element maxOccurs="unbounded" minOccurs="1" name="role" type="bsp:roleTypes" />
+                                                                <xs:element maxOccurs="unbounded" minOccurs="1" name="role" type="roleTypes" />
                                                             </xs:sequence>
                                                         </xs:complexType>
                                                     </xs:element>
