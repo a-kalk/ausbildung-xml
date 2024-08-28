@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:bsp="https://gitlab.encoway-services.de/kalk/ausbildung-xml/-/raw/main/sampleProject.xsd?ref_type=heads"
+           targetNamespace="https://gitlab.encoway-services.de/kalk/ausbildung-xml/-/raw/main/sampleProject.xsd?ref_type=heads"
+           elementFormDefault="qualified">
+
+    <xs:simpleType name="roleTypes">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Developer" />
+            <xs:enumeration value="Architect" />
+            <xs:enumeration value="Supporter" />
+            <xs:enumeration value="Tester" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="projects">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="project" minOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="name" minOccurs="1" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="([a-z])+(-?([a-z0-9])+)*" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="description" type="xs:string" />
+                            <xs:element name="version" minOccurs="1" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="([0-9].){2}[0-9](-SNAPSHOT)?" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="creationDate" type="xs:date" />
+                            <xs:element name="organization" minOccurs="1" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+                                        <xs:element name="url" type="xs:string" minOccurs="1" maxOccurs="1" />
+                                        <xs:element name="address" minOccurs="1" maxOccurs="1">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="street" type="xs:string" minOccurs="1" maxOccurs="1" />
+                                                    <xs:element name="postal" type="xs:unsignedShort" minOccurs="1" maxOccurs="1" />
+                                                    <xs:element name="place" type="xs:string" minOccurs="1" maxOccurs="1" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="developers" minOccurs="1" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="developer" minOccurs="1">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="id" type="xs:unsignedByte" minOccurs="1" maxOccurs="1" />
+                                                    <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+                                                    <xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1" />
+                                                    <xs:element name="roles" minOccurs="1" maxOccurs="1">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element maxOccurs="1" name="role" type="bsp:roleTypes" />
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="contributors">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="contributor" minOccurs="1" maxOccurs="1">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+                                                    <xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1" />
+                                                    <xs:element name="roles" minOccurs="0" maxOccurs="1">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element maxOccurs="unbounded" minOccurs="1" name="role" type="bsp:roleTypes" />
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:unsignedByte" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
