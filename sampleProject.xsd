@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:bsp="https://raw.githubusercontent.com/a-kalk/ausbildung-xml/main/sampleProject.xsd"
-           targetNamespace="https://raw.githubusercontent.com/a-kalk/ausbildung-xml/main/sampleProject.xsd"
            elementFormDefault="qualified">
 
     <xs:simpleType name="roleTypes">
